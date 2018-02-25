@@ -91,27 +91,27 @@ const ControlItem = styled.button`
 `
 
 const SliderItem = styled.img`
-  transition: all .5s;
   width: 100%;
   max-height: 100%;
-  position: absolute;
-  left:${props => props.left * -100}%;
 `
 
 const Link = styled.a`
+  left:${props => props.left * -100}%;
   width: 100%;
   height: 90%;
   max-height: 90%;
   position: absolute;
-  left: 0;
   z-index: 1;
+  transition: left .3s;
 `
 
 export default class Slider extends Component {
 
   state = {
     active: 0,
-    list: []
+    list: [],
+    start: 0,
+    end: 0
   }
 
   componentWillMount = () => {
@@ -148,17 +148,45 @@ export default class Slider extends Component {
     this.setState({ active: position })
   }
 
+  touchStart = (e) => {
+    this.setState({start: e.changedTouches[0].screenX})
+  }
+
+  touchEnd = (e) => {
+    this.setState({end: e.changedTouches[0].screenX})
+    this.handleGesture()
+  }
+
+  handleGesture = () => {
+    const { start, end }= this.state
+    console.log(start, end)
+    if (start > end && start - end > 50) {
+      this.next()
+    } else if(end > start && end - start > 50) {
+      this.prev()
+    }
+  }
+
    render() {
     const { list, active } = this.state
     return (
       <SliderContainer
+        onTouchStart={this.touchStart}
+        onTouchEnd={this.touchEnd}
         height={this.props.height}
         width={this.props.width}
       >
         {
           list.map((data, key) => (
-            <Link href={data.link} target={this.props.target} key={key} title={this.props.title}>
-              <SliderItem active={active} left={active - key} offset={key} src={data.img} alt={data.alt} />
+            <Link 
+              key={key}
+              href={data.link}
+              target={this.props.target}
+              title={this.props.title}
+              left={active - key}
+              active={active === key}
+            >
+              <SliderItem src={data.img} alt={data.alt} />
             </Link>
           ))
         }
