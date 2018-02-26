@@ -1,6 +1,7 @@
 # Slider
 
-Carousal using react.
+Carousal using react. 
+Carousal can swipe.
 ## API
 | Name     | Type     | Default     |  Description
 ---------  |----------|-------------|-----------------

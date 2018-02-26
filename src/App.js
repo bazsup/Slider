@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Slider</h2>
+        <h2>Slider can swipe</h2>
         <Slider
           list={data}
           target='_blank'
