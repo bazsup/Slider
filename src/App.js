@@ -17,6 +17,10 @@ const data = [
   {
     img: 'https://www.thairath.co.th/media/hBbh9CaTZ6uQMQNI4HGSJCCDZL3mm4BpGezogvEaLjGmGamIcWwQv1DGHKatYEzCdOzl2y2.jpg',
     link: 'https://www.thairath.co.th/novel/ChuamongTong/synopsis'
+  },
+  {
+    img: 'https://www.thairath.co.th/media/hBbh9CaTZ6uQMQNI4HGSJdA0jhOrVuci4gAWRFjLnAXdzsNBrY0Xwy7m8DXH9Tt0Lfpt9yP.jpg',
+    link: 'https://www.thairath.co.th/content/1212827'
   }
 ]
 
